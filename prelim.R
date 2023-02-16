@@ -29,5 +29,7 @@ prelim <- function(data, digs = 2){
       oput <- cbind(colnames(data), Skew, Mean, SD, Median, IQR)
       output <- data.frame(oput, row.names = TRUE)
   }
+  output[] <- lapply(output, function(x) if(is.numeric(x)) round(x, digits = digs) else as.character(x))
   return(output)
 }
+
